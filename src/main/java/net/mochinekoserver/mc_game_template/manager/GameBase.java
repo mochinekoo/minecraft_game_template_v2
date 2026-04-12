@@ -9,6 +9,9 @@ import javax.annotation.Nonnull;
 
 public abstract class GameBase {
 
+    public static final int DEFAULT_GAME_TIME = 60*15;
+    public static final int DEFAULT_COUNT_TIME = 10;
+
     protected final String name; //ゲームの名前
     protected int countTime; //ゲームのカウント
     protected int time; //ゲームの経過時間
@@ -17,8 +20,8 @@ public abstract class GameBase {
 
     public GameBase(String name) {
         this.name = name;
-        this.time = 0;
-        this.countTime = 10;
+        this.time = DEFAULT_GAME_TIME;
+        this.countTime = DEFAULT_COUNT_TIME;
         this.status = GameStatus.WAITING;
     }
 
