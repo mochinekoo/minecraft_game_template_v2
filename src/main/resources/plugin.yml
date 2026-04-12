@@ -2,3 +2,14 @@ name: Minecraft_Game_Template_v2
 version: '1.0-SNAPSHOT'
 main: net.mochinekoserver.mc_game_template.Main
 api-version: '1.20'
+
+commands:
+  game_start:
+    description: ゲームを開始するコマンド
+    permission: net.mochinekoserver.mc_game_template.game_start
+  game_stop:
+    description: ゲームを停止するコマンド
+    permission: net.mochinekoserver.mc_game_template.game_stop
+  game_team:
+    description: ゲームのチームに関するコマンド
+    permission: net.mochinekoserver.mc_game_template.game_team
