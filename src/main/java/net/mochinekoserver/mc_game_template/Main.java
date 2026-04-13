@@ -3,7 +3,9 @@ package net.mochinekoserver.mc_game_template;
 import net.mochinekoserver.mc_game_template.command.GameStartStopCommand;
 import net.mochinekoserver.mc_game_template.command.GameTeamCommand;
 import net.mochinekoserver.mc_game_template.listener.*;
+import net.mochinekoserver.mc_game_template.manager.GameManager;
 import net.mochinekoserver.mc_game_template.manager.ScoreboardManager;
+import net.mochinekoserver.mc_game_template.manager.TeamManager;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -25,6 +27,10 @@ public final class Main extends JavaPlugin {
     @Override
     public void onDisable() {
         // Plugin shutdown logic
+        var gameManager = GameManager.getInstance();
+        var teamManager = TeamManager.getInstance();
+        gameManager.reset();
+        teamManager.emptyTeam();
         for (Player online : Bukkit.getOnlinePlayers()) {
             var scoreboardManager = ScoreboardManager.getInstance(online.getUniqueId());
             scoreboardManager.release();
