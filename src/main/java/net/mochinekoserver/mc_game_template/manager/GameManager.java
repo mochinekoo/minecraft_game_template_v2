@@ -59,13 +59,20 @@ public class GameManager extends GameBase {
 
     private void updateWaitCountScene() {
         if (status != GameStatus.WAITING && status != GameStatus.COUNTING) return;
+        var configManager = ConfigManager.getInstance();
+        var teamManager = TeamManager.getInstance();
+
         if (countTime <= 0) { //0秒以下
             //ゲーム開始の処理
             PluginUtil.sendGlobalInfoMessage("ゲーム開始!");
             status = GameStatus.RUNNING;
+            teamManager.assignTeam(); //チームを割り当てる
             for (Player online : Bukkit.getOnlinePlayers()) {
                 var scoreboardManager = ScoreboardManager.getInstance(online.getUniqueId());
-                scoreboardManager.setScoreboard();
+                var joinTeam = teamManager.getJoinGameTeam(online);
+                var teamSpawn = configManager.getTeamSpawnLocation(joinTeam);
+                scoreboardManager.setScoreboard(); //スコアボードを設定する
+                online.teleport(teamSpawn); //チームのスポーンにテレポート
             }
         }
         else {

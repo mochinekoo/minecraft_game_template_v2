@@ -1,0 +1,14 @@
+spawn:
+  world_name: "world"
+  lobby:
+    x:
+    y:
+    z:
+  red:
+    x:
+    y:
+    z:
+  blue:
+    x:
+    y:
+    z:
