@@ -12,3 +12,11 @@ spawn:
     x:
     y:
     z:
+
+database:
+  use_database: false
+  host: "localhost"
+  port: 3306
+  db_name: "game"
+  user_name:
+  user_pass:
